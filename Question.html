@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<style>
+.container {
+  display: block;
+  position: relative;
+  padding-left: 40px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  
+}
+
+/* Hide the default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* custom radio button */
+.check {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 30px;
+  width: 30px;
+  background-color: lightgray;
+  border-radius: 50%;
+}
+
+.container:hover input ~ .check {
+  background-color: gray;
+}
+
+.container input:checked ~ .check {
+  background-color: green;
+}
+
+.check:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.container input:checked ~ .check:after {
+  display: block;
+}
+
+.container .check:after {
+  top: 8px;
+ left: 8px;
+ width: 15px;
+ height: 15px;
+ border-radius: 50%;
+ background: white;
+}
+</style>
+<script>
+    function check()
+    {
+       x= document.getElementsByName('radio').value;
+       if(x==="delhi")
+       {
+           console.log('correct');
+       }
+       else
+           console.log('incorrect');
+    }
+    </script>
+</head>
+<body style="background-color:deepskyblue">
+
+<h3>Question:</h3>
+        <label>Mockup/wireframe:</label>
+        <div style="border:solid;background-color:lightcoral;width:600px">
+        <p><pre>     Answer the following Questions correctly:what is the capital of India?</pre></p>
+        <pre><h3>      select the best answer:</h3></pre><br/>
+        </div>
+        <div>
+       <label class="container" id="k"><p style="padding:5px; width:600px; border:solid;background-color:burlywood;"> Kolkata</p>
+       <input value="kolkata" type="radio" name="radio" onclick="check(1);" >
+       <span class="check"></span> </label>
+       <label class="container" id="nd"><p style="padding:5px; width:600px; border:solid;background-color:burlywood;"> New Dehli</p>
+       <input  value="delhi" type="radio" name="radio" onclick="check(2);">
+       <span class="check"></span></label>
+       <label class="container" id="c"><p style="padding:5px; width:600px; border:solid;background-color:burlywood;"> Chennai</p>
+       <input value="chennai" type="radio" name="radio" onclick="check(3);">
+       <span class="check"></span></label>
+       </div>
+        <hr color="red"/>
+       <center>
+       <label>ARE YOU</label><br/>
+       <button id="y" style="background-color:darkorange;" onclick="check();">Sure</button>   
+       <button id="n" style="background-color:darkorange;">Not Sure</button>
+       <br/><br/>
+       </center>
+       
+<div class="new">
+    
+</div>
+     <script>
+    $("center").hide();
+    $("p").click(function(){
+    $("center").show();
+    
+})
+$("#y").click(function(){
+            var radioValue = $("input[name='radio']:checked").val();
+            if(radioValue){
+                if(radioValue==='delhi')
+                    //$("#new").visible();
+                       window.location.replace("pass.html");
+               else
+                  window.location.replace("fail.html");
+            }
+});
+$("#n").click(function(){
+    $("center").hide()
+})
+</script>
+                      
+</body>
+</html>
